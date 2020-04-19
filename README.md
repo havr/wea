@@ -1,14 +1,14 @@
-#####What is it
+## What is it
 
 This is a test task for FastBill. 
 It's a web server that serves a single endpoint `/GET city-information?name=<location-name>`. 
 It responds with the Wikipedia brief introduction for the given location joined with it's current temperature and a short weather description.
 
-##### API Spec
+## API Spec
 
 The server responds in the JSON format.
 
-*Error response*
+### Error Response
 
 The error response use the same structure:
 
@@ -16,7 +16,7 @@ The error response use the same structure:
 |----------|--------|-------------|
 | `error`  | string | a brief description of what happened |
 
-*Endpoints*
+### Endpoints
 
 `GET /city-information?name=<city-name>`
 
@@ -35,20 +35,20 @@ The error response use the same structure:
 | 404 | either the wikipedia entry or weater data not found |
 | 500 | an unexpected server error |
 
-#####Assumptions
+## Assumptions
 
 The app doesn't check if a user queries exactly a city, so it returns a result if there is a city in OpenWeather registry and the corresponding wikipedia article.
 
 Moreover, it doesn't resolve ambiguities (e.g. Washington D.C. and Washington the State).
 
-#####Envs
+## Envs
 
 ```bash
 export WE_SERVE_AT=:7070 # Required, a host to serve at.
 export WE_OW_API_KEY=d623c13ca45eae0da784b3e6f8d6b17d # Required, an OpenWeather API KEY.
 ```
 
-#####Running
+## Running
 
 Set the environment variables up and then simply run.
 ```
@@ -57,10 +57,10 @@ make run
 go run cmd/wea/wea.go
 ```
 
-#####Linters
+## Linters
 
 Install the tools:
- - golangci-lint: use manual https://github.com/golangci/golangci-lint#install
+ - golangci-lint: use https://github.com/golangci/golangci-lint#install
  - golint: `go get -u golang.org/x/lint/golint`
 
 Run linters:
@@ -68,11 +68,12 @@ Run linters:
 make lint
 ```
 
-#####Testing
+## Testing
+
 HTTP server and business logic are partially covered with unit tests.
 Third-party clients have basic integration tests to ensure they work properly.
-In order to test OpenWeather one should provide the `WE_OW_API_KEY` env to the test.
-Example setup looks like this
+In order to test OpenWeather, one should provide the `WE_OW_API_KEY` env to the test.
+For example:
 ```
 WE_OW_API_KEY=d623c13ca45eae0da784b3e6f8d6b17d make test
 ```
