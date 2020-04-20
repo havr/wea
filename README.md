@@ -1,7 +1,7 @@
 ## What is it
 
 This is a test task for FastBill. 
-It's a web server that serves a single endpoint `/GET city-information?name=<location-name>`. 
+It's a web server that serves a single endpoint `GET /city-information?name=<location-name>`. 
 It responds with the Wikipedia brief introduction for the given location joined with it's current temperature and a short weather description.
 
 ## API Spec
